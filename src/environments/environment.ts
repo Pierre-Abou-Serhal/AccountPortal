@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'http://accountservice-service:80/AccountService/',
+  apiUrl: 'http://accountservice-service:31703/AccountService/',
 };
