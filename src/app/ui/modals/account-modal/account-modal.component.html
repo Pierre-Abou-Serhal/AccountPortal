@@ -1,0 +1,88 @@
+<div class="container-fluid shadow rounded">
+  <h4>Create Account</h4>
+  <hr />
+  <form [formGroup]="form" class="row g-3 mb-4" (keyup)="onFormControlKeyUp()">
+    <div class="col-lg-6">
+      <label for="inputAccountHolderName">
+        Holder Name <span class="text-danger">*</span>
+      </label>
+      <input
+        id="inputAccountHolderName"
+        type="text"
+        formControlName="AccountHolderName"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': isUserInteraction && f['AccountHolderName'].errors
+        }"
+      />
+
+      <div
+        *ngIf="isUserInteraction && f['AccountHolderName'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['AccountHolderName'].errors?.['required']">Holder Name is required</div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <label for="inputInitialDeposit">
+        Initial Deposit <span class="text-danger">*</span>
+      </label>
+      <input
+        id="inputInitialDeposit"
+        type="text"
+        formControlName="InitialDeposit"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': isUserInteraction && f['InitialDeposit'].errors
+        }"
+      />
+
+      <div
+        *ngIf="isUserInteraction && f['InitialDeposit'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['InitialDeposit'].errors?.['required']">Initial Deposit is required
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <label for="inputAccountType">
+        Account Type <span class="text-danger">*</span>
+      </label>
+      <input
+        id="inputAccountType"
+        type="text"
+        formControlName="AccountType"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': isUserInteraction && f['AccountType'].errors
+        }"
+      />
+
+      <div
+        *ngIf="isUserInteraction && f['AccountType'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['AccountType'].errors?.['required']">Account Type is required
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="row g-3 align-items-center justify-content-end">
+    <div class="col-auto">
+      <button
+        type="submit"
+        class="btn btn-primary ve-btn-primary me-2"
+        (click)="onSaveClick()"
+      >
+        Save
+      </button>
+      <button class="btn btn-danger" (click)="onCancelClick()">Close</button>
+    </div>
+  </div>
+
+  <div class="row">&nbsp;</div>
+</div>

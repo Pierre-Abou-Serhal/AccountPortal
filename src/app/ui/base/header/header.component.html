@@ -1,4 +1,4 @@
-<header>
+<header class="sticky-top bg-dark">
   <nav class="navbar navbar-expand-lg border-bottom">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Account Portal</a>
@@ -10,20 +10,21 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              [class.active]="activeLink === 'accounts'"
-              (click)="setActiveLink('accounts')"
+              [class.active]="activeTab === 'accounts'"
+              (click)="setActiveTab('accounts')"
               href="#"
+              routerLink="/accounts"
             >Accounts</a
             >
           </li>
           <li class="nav-item">
             <a
               class="nav-link"
-              [class.active]="activeLink === 'transactions'"
-              (click)="setActiveLink('transactions')"
+              [class.active]="activeTab === 'transactions'"
+              (click)="setActiveTab('transactions')"
               href="#"
-            >Transactions</a
-            >
+              routerLink="/transactions"
+            >Transactions</a>
           </li>
         </ul>
       </div>

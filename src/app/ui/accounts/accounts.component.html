@@ -1,1 +1,26 @@
-<p>accounts works!</p>
+<table class="table mt-5 shadow rounded">
+  <thead>
+  <tr>
+    <th scope="col">Account Id</th>
+    <th scope="col">Holder Name</th>
+    <th scope="col">Initial Deposit</th>
+    <th scope="col">Type</th>
+    <th scope="col">Actions &nbsp;<fa-icon [icon]="faAdd" class="me-1 text-success" style="cursor: pointer" (click)="editAccount()"></fa-icon></th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (account of accountList; track account.Id;) {
+      <tr>
+        <th scope="row">{{ account.Id }}</th>
+        <td>{{ account.AccountHolderName }}</td>
+        <td>{{ account.InitialDeposit | number: '.2'}}</td>
+        <td>{{ account.AccountType }}</td>
+        <td>
+          <fa-icon [icon]="faEdit" class="me-1 text-primary" style="cursor: pointer" (click)="editAccount(account)"></fa-icon>
+          <fa-icon [icon]="faRemove" class="me-1 text-danger" style="cursor: pointer" (click)="openDeleteConfirmModal(account.Id)"></fa-icon>
+          <fa-icon [icon]="faMoneyBill" class="text-success" style="cursor: pointer" (click)="getAccountBalance(account.Id)"></fa-icon>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

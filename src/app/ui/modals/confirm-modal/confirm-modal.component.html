@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Confirmation Popup</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-describedby="modal-title"
+    (click)="modal.dismiss('Cross click')"
+  ></button>
+</div>
+<div class="modal-body">
+  <p>
+    <strong>Are you sure you want to delete</strong>
+  </p>
+  <p>
+    All associated information will be permanently deleted.
+    <span class="text-danger">This operation can not be undone.</span>
+  </p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="modal.dismiss('No Click')">No</button>
+  <button type="button" class="btn btn-outline-primary" (click)="modal.close(true)">Yes</button>
+</div>

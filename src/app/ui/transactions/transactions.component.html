@@ -1,1 +1,74 @@
-<p>transactions works!</p>
+<div class="container-fluid shadow rounded mt-5">
+  <h4>Create Transaction</h4>
+  <hr />
+  <form [formGroup]="form" class="row g-3 mb-4" (keyup)="onFormControlKeyUp()">
+    <div class="col-lg-6">
+      <label for="selectAccountId">
+        Account: <span class="text-danger">*</span>
+      </label>
+      <select
+        id="selectAccountId"
+        formControlName="AccountId"
+        class="form-select"
+        [ngClass]="{
+          'is-invalid': isUserInteraction && f['AccountId'].errors
+        }"
+      >
+        @for (account of accountList; track account.Id;) {
+          <option value="{{account.Id}}">{{account.AccountHolderName}} - {{account.AccountType}}</option>
+        }
+      </select>
+
+      <div
+        *ngIf="isUserInteraction && f['AccountId'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['AccountId'].errors?.['required']">Account is required</div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <label for="inputAmount">Amount <span class="text-danger">*</span>
+      </label>
+      <input
+        id="inputAmount"
+        type="text"
+        formControlName="Amount"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': isUserInteraction && f['Amount'].errors
+        }"
+      />
+
+      <div
+        *ngIf="isUserInteraction && f['Amount'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['Amount'].errors?.['required']">Amount is required
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="row g-3 align-items-center justify-content-end">
+    <div class="col-auto">
+      <button
+        type="submit"
+        class="btn btn-primary me-2"
+        (click)="onDepositClick()"
+      >
+        Deposit
+      </button>
+      <button
+        type="submit"
+        class="btn btn-success me-2"
+        (click)="onWithdrawClick()"
+      >
+        Withdraw
+      </button>
+    </div>
+  </div>
+
+  <div class="row">&nbsp;</div>
+</div>
