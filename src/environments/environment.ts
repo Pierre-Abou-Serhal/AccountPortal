@@ -1,4 +1,3 @@
 export const environment = {
-  apiUrl: 'https://vanguard-edge.com/VanguardEdge/',
+  apiUrl: 'http://accountservice-service/AccountService/',
 };
-  
