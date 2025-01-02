@@ -40,7 +40,7 @@ pipeline {
                 script {
                     echo "Building Docker image for Angular app..."
                     powershell '''
-                        docker build -t $FULL_IMAGE_NAME .
+                        docker build -t $env:FULL_IMAGE_NAME .
                     '''
                 }
             }
