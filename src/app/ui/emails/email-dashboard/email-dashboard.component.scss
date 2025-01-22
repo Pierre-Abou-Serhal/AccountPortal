@@ -1,0 +1,11 @@
+// email-dashboard.component.css
+.container-fluid {
+  font-family: Arial, sans-serif;
+}
+.list-group-item {
+  cursor: pointer;
+}
+.list-group-item.active {
+  background-color: #0d6efd;
+  color: white;
+}
