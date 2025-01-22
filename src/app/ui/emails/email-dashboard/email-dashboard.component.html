@@ -2,25 +2,36 @@
   <div class="row">
     <div class="col-4 border-end" style="height: 100vh; overflow-y: auto;">
       <h5 class="p-3">Emails</h5>
-      <ul class="list-group">
-        <li *ngFor="let email of emails" class="list-group-item" (click)="selectEmail(email)" [class.active]="email === selectedEmail">
-          <strong>{{ email.subject }}</strong><br>
-          <small>From: {{ email.from }}</small>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="currentTab === 'Received/In Progress'" (click)="filterEmails('Received/In Progress')">Received/In Progress</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="currentTab === 'Completed'" (click)="filterEmails('Completed')">Completed</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="currentTab === 'Discarded'" (click)="filterEmails('Discarded')">Discarded</a>
+        </li>
+      </ul>
+      <ul class="list-group mt-3">
+        <li *ngFor="let email of filteredEmails" class="list-group-item" (click)="selectEmail(email)" [class.active]="email === selectedEmail">
+          <strong>{{ email.EmailSubject }}</strong><br>
+          <small>From: {{ email.EmailFrom }}</small>
         </li>
       </ul>
     </div>
 
     <div class="col-8 p-4">
       <ng-container *ngIf="selectedEmail; else noEmailSelected">
-        <h5>{{ selectedEmail.subject }}</h5>
-        <p><strong>From:</strong> {{ selectedEmail.from }}</p>
-        <p><strong>To:</strong> {{ selectedEmail.to }}</p>
-        <p>{{ selectedEmail.body }}</p>
-        <div *ngIf="selectedEmail.attachments.length > 0">
+        <h5>{{ selectedEmail.EmailSubject }}</h5>
+        <p><strong>From:</strong> {{ selectedEmail.EmailFrom }}</p>
+        <p><strong>To:</strong> {{ selectedEmail.EmailTo }}</p>
+        <div [innerHTML]="selectedEmail.EmailBody"></div>
+        <div *ngIf="selectedEmail.Attachments.length > 0">
           <h6>Attachments</h6>
           <ul>
-            <li *ngFor="let attachment of selectedEmail.attachments">
-              {{ attachment.name }} ({{ attachment.type }})
+            <li *ngFor="let attachment of selectedEmail.Attachments">
+              {{ attachment.Name }} ({{ attachment.StatusValue }})
             </li>
           </ul>
         </div>
